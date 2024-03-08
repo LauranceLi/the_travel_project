@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Filter</title>
+<style>
+    /* Some basic styling for demonstration */
+    body {
+        font-family: Arial, sans-serif;
+    }
+    select, input {
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin-bottom: 5px;
+    }
+</style>
+</head>
+<body>
+
+<select id="filterSelect">
+    <option value="">Select filter...</option>
+    <option value="apple">Apple</option>
+    <option value="orange">Orange</option>
+    <option value="banana">Banana</option>
+    <option value="pineapple">Pineapple</option>
+    <option value="grapes">Grapes</option>
+    <option value="DD">DD</option>
+    <option value="FF">FF</option>
+    <option value="BB">BB</option>
+    <option value="PP">PP</option>
+    <option value="GD">GD</option>
+</select>
+
+<input type="text" id="filterInput" placeholder="Text filter...">
+
+<ul id="list">
+    <li>Apple</li>
+    <li>Orange</li>
+    <li>Banana</li>
+    <li>Pineapple</li>
+    <li>Grapes</li>
+    <li>DD</li>
+    <li>ORFRnge</li>
+    <li>BandeFFana</li>
+    <li>PineaEEDpple</li>
+    <li>GrEEFaes</li>
+</ul>
+
+<script>
+    // Get the select element, input element, and the list
+    var filterSelect = document.getElementById('filterSelect');
+    var filterInput = document.getElementById('filterInput');
+    var list = document.getElementById('list');
+
+    // Add event listener to the select element
+    filterSelect.addEventListener('change', filterList);
+
+    // Add event listener to the input element
+    filterInput.addEventListener('input', filterList);
+
+    // Function to filter the list
+    function filterList() {
+        // Get the selected value from the select element
+        var selectedValue = filterSelect.value.toLowerCase();
+
+        // Get the value from the input element
+        var inputValue = filterInput.value.toLowerCase();
+
+        // Get all list items
+        var items = list.getElementsByTagName('li');
+
+        // Loop through each list item
+        Array.from(items).forEach(function(item) {
+            // Get the text content of the list item
+            var text = item.textContent.toLowerCase();
+
+            // Check if the text matches the selected value and input value
+            if ((selectedValue === '' || text.indexOf(selectedValue) !== -1) && 
+                (inputValue === '' || text.indexOf(inputValue) !== -1)) {
+                // If it does, display the list item
+                item.style.display = 'block';
+            } else {
+                // If not, hide the list item
+                item.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
