@@ -1,5 +1,5 @@
 <?php
-  // require __DIR__ ."/parts/pdo-connect.php";
+  require __DIR__ . '/parts/pdo_connect.php';
   $title = "Index";
   $pageName = 'index';
 ?>
