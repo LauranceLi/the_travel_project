@@ -1,4 +1,9 @@
-        <!-- Sidebar Start -->
+<?php
+if (!isset($pageName)) {
+  $pageName = '';
+}
+?>
+<!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
                 <a href="index.php" class="navbar-brand mx-4 mb-3">
@@ -10,8 +15,8 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">姓名</h6>
-                        <span>身份權限</span>
+                        <h6 class="mb-0"><?= $_SESSION['admin']['employee_nickname'] ?></h6>
+                        <span>rolename</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">

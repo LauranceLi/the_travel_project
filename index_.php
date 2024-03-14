@@ -1,5 +1,6 @@
 <?php
   require __DIR__ . '/parts/pdo_connect.php';
+  session_start();
   $title = "Index";
   $pageName = 'index';
   
@@ -9,9 +10,6 @@
 <?php include __DIR__. '/parts/spinner.php' ?>
 <?php include __DIR__. '/parts/slidebar.php' ?>
 <?php include __DIR__. '/parts/navbar.php' ?>
-
-
-
 
 
 
