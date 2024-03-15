@@ -193,7 +193,6 @@ $pageName = 'roleList';
                       </div>
                     </div>
                     <div class="permissionItem m-4">
-
                       <h6>表單管理</h6>
                       <div class="bg-secondary rounded h-100 p-1 d-flex">
                         <div class="form-check form-switch me-4 d-flex align-items-center">
