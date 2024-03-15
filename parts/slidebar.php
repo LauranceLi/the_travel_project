@@ -22,7 +22,7 @@ if (!isset($pageName)) {
                 <div class="navbar-nav w-100">
                     <a href="index_.php" class="nav-item nav-link <?= $pageName == 'index' ? 'active' : '' ?>"><i class="fa fa-tachometer-alt me-2"></i>歡迎回来</a>
 
-                    <div class="nav-item dropdown">
+                    <!-- <div class="nav-item dropdown">
                         <a href="#" 
                         class="nav-link dropdown-toggle <?= $pageName == 'role_settings'  ? 'active' : '' ?> <?= $pageName == 'authority_settings'  ? 'active' : '' ?>" 
                         data-bs-toggle="dropdown"
@@ -36,13 +36,14 @@ if (!isset($pageName)) {
                             <a href="role_settings.php" class="dropdown-item <?= $pageName == 'role_settings' ? 'active' : '' ?>"
                             data-bs-popper="<?= $pageName == 'role_settings' ? 'none' : '' ?>">角色設置</a>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <a href="employee.php" class="nav-item nav-link <?= $pageName == 'employee' ? 'active' : '' ?>" ><i class="fa fa-tachometer-alt me-2"></i>員工管理</a>
-                    <a href="member.php" class="nav-item nav-link <?= $pageName == 'member' ? 'active' : '' ?>"><i class="fa fa-tachometer-alt me-2"></i>會員管理</a>
+                    <a href="roleList.php" class="nav-item nav-link <?= $pageName == 'roleList' ? 'active' : '' ?>" ><i class="fa-solid fa-shield-halved"></i>角色權限管理</a>
+                    <a href="employee.php" class="nav-item nav-link <?= $pageName == 'employee' ? 'active' : '' ?>" ><i class="fa-solid fa-circle-user"></i>員工管理</a>
+                    <a href="member.php" class="nav-item nav-link <?= $pageName == 'member' ? 'active' : '' ?>"><i class="fa-solid fa-users"></i>會員管理</a>
 
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>積分管理</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-star-half-stroke"></i>積分管理</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="points_details.php" class="dropdown-item">積分明細</a>
                             <a href="points_changes.php" class="dropdown-item">積分操作</a>
@@ -50,9 +51,20 @@ if (!isset($pageName)) {
                     </div>
 
 
-                    <a href="" class="nav-item nav-link <?= $pageName == '' ? 'active' : '' ?>"><i class="fa fa-tachometer-alt me-2"></i>套裝行程管理</a>
-                    <a href="" class="nav-item nav-link <?= $pageName == '' ? 'active' : '' ?>"><i class="fa fa-tachometer-alt me-2"></i>訂單管理</a>
-                    <a href="" class="nav-item nav-link <?= $pageName == '' ? 'active' : '' ?>"><i class="fa fa-tachometer-alt me-2"></i>商品上架管理</a>
+                    <a href="" class="nav-item nav-link <?= $pageName == '' ? 'active' : '' ?>"><i class="fa-solid fa-book"></i>套裝行程管理</a>
+                    <a href="" class="nav-item nav-link <?= $pageName == '' ? 'active' : '' ?>"><i class="fa-solid fa-sack-dollar"></i>訂單管理</a>
+                    <a href="" class="nav-item nav-link <?= $pageName == '' ? 'active' : '' ?>"><i class="fa-solid fa-bag-shopping"></i>商品上架管理</a>
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-rectangle-list"></i>表單管理</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="" class="dropdown-item">團體表單</a>
+                            <a href="" class="dropdown-item">講座表單</a>
+                            <a href="" class="dropdown-item">客製化表單</a>
+                            <a href="" class="dropdown-item">興趣表單</a>
+                            <a href="" class="dropdown-item">服務預約表單</a>
+                        </div>
+                    </div>
 
 
                 </div>

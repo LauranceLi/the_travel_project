@@ -1,8 +1,8 @@
 <?php
 require __DIR__ . '/parts/pdo_connect.php';
 session_start();
-$title = "Role";
-$pageName = 'role';
+$title = "Role List";
+$pageName = 'roleList';
 ?>
 
 <?php include __DIR__ . '/parts/html-head.php' ?>
@@ -30,7 +30,7 @@ $pageName = 'role';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
 
-                  <div class="modal-body">
+                  <div class="modal-body ">
                     <h6>角色名稱</h6>
                     <div class="input-group mb-3">
                       <input type="text" class="form-control" placeholder="新建名稱" aria-label="Username" aria-describedby="basic-addon1">
@@ -43,7 +43,7 @@ $pageName = 'role';
                           <label class="form-check-label " for="roleSetCheckAll">全選</label>
                         </div>
                         <div class="btn-group" role="group">
-                          <input name="roleSet" type="checkbox" class="btn-check" id="viewroleSet" autocomplete="off" onclick="allCheck('roleSetCheckAll','roleSet')">
+                          <input name="roleSet" type="checkbox" class="btn-check" id="viewroleSet" autocomplete="off" onclick="allCheck('roleSetCheckAll','roleSet') " checked="true">
                           <label class="btn btn-outline-info" for="viewroleSet">檢視</label>
 
                           <input name="roleSet" type="checkbox" class="btn-check" id="addroleSet" autocomplete="off" onclick="allCheck('roleSetCheckAll','roleSet')">
@@ -65,7 +65,7 @@ $pageName = 'role';
                           <label class="form-check-label " for="employeeCheckAll">全選</label>
                         </div>
                         <div class="btn-group" role="group">
-                          <input name="employee" type="checkbox" class="btn-check" id="viewemployee" autocomplete="off" onclick="allCheck('employeeCheckAll','employee')">
+                          <input name="employee" type="checkbox" class="btn-check" id="viewemployee" autocomplete="off" onclick="allCheck('employeeCheckAll','employee')" checked="true">
                           <label class="btn btn-outline-info" for="viewemployee">檢視</label>
 
                           <input name="employee" type="checkbox" class="btn-check" id="addemployee" autocomplete="off" onclick="allCheck('employeeCheckAll','employee')">
@@ -87,7 +87,7 @@ $pageName = 'role';
                           <label class="form-check-label " for="memberCheckAll">全選</label>
                         </div>
                         <div class="btn-group" role="group">
-                          <input name="member" type="checkbox" class="btn-check" id="viewmember" autocomplete="off" onclick="allCheck('memberCheckAll','member')">
+                          <input name="member" type="checkbox" class="btn-check" id="viewmember" autocomplete="off" onclick="allCheck('memberCheckAll','member')" checked="true">
                           <label class="btn btn-outline-info" for="viewmember">檢視</label>
 
                           <input name="member" type="checkbox" class="btn-check" id="addmember" autocomplete="off" onclick="allCheck('memberCheckAll','member')">
@@ -109,7 +109,7 @@ $pageName = 'role';
                           <label class="form-check-label " for="pointCheckAll">全選</label>
                         </div>
                         <div class="btn-group" role="group">
-                          <input name="point" type="checkbox" class="btn-check" id="viewpoint" autocomplete="off" onclick="allCheck('pointCheckAll','point')">
+                          <input name="point" type="checkbox" class="btn-check" id="viewpoint" autocomplete="off" onclick="allCheck('pointCheckAll','point')" checked="true">
                           <label class="btn btn-outline-info" for="viewpoint">檢視</label>
 
                           <input name="point" type="checkbox" class="btn-check" id="addpoint" autocomplete="off" onclick="allCheck('pointCheckAll','point')">
@@ -132,7 +132,7 @@ $pageName = 'role';
                           <label class="form-check-label " for="itineraryCheckAll">全選</label>
                         </div>
                         <div class="btn-group" role="group">
-                          <input name="itinerary" type="checkbox" class="btn-check" id="viewitinerary" autocomplete="off" onclick="allCheck('itineraryCheckAll','itinerary')">
+                          <input name="itinerary" type="checkbox" class="btn-check" id="viewitinerary" autocomplete="off" onclick="allCheck('itineraryCheckAll','itinerary')" checked="true">
                           <label class="btn btn-outline-info" for="viewitinerary">檢視</label>
 
                           <input name="itinerary" type="checkbox" class="btn-check" id="additinerary" autocomplete="off" onclick="allCheck('itineraryCheckAll','itinerary')">
@@ -155,7 +155,7 @@ $pageName = 'role';
                           <label class="form-check-label " for="orderCheckAll">全選</label>
                         </div>
                         <div class="btn-group" role="group">
-                          <input name="order" type="checkbox" class="btn-check" id="vieworder" autocomplete="off" onclick="allCheck('orderCheckAll','order')">
+                          <input name="order" type="checkbox" class="btn-check" id="vieworder" autocomplete="off" onclick="allCheck('orderCheckAll','order')" checked="true">
                           <label class="btn btn-outline-info" for="vieworder">檢視</label>
 
                           <input name="order" type="checkbox" class="btn-check" id="addorder" autocomplete="off" onclick="allCheck('orderCheckAll','order')">
@@ -178,7 +178,7 @@ $pageName = 'role';
                           <label class="form-check-label " for="productCheckAll">全選</label>
                         </div>
                         <div class="btn-group" role="group">
-                          <input name="product" type="checkbox" class="btn-check" id="viewproduct" autocomplete="off" onclick="allCheck('productCheckAll','product')">
+                          <input name="product" type="checkbox" class="btn-check" id="viewproduct" autocomplete="off" onclick="allCheck('productCheckAll','product')" checked="true">
                           <label class="btn btn-outline-info" for="viewproduct">檢視</label>
 
                           <input name="product" type="checkbox" class="btn-check" id="addproduct" autocomplete="off" onclick="allCheck('productCheckAll','product')">
@@ -201,7 +201,7 @@ $pageName = 'role';
                           <label class="form-check-label " for="formCheckAll">全選</label>
                         </div>
                         <div class="btn-group" role="group">
-                          <input name="form" type="checkbox" class="btn-check" id="viewform" autocomplete="off" onclick="allCheck('formCheckAll','form')">
+                          <input name="form" type="checkbox" class="btn-check" id="viewform" autocomplete="off" onclick="allCheck('formCheckAll','form')" checked="true">
                           <label class="btn btn-outline-info" for="viewform">檢視</label>
 
                           <input name="form" type="checkbox" class="btn-check" id="addform" autocomplete="off" onclick="allCheck('formCheckAll','form')">
