@@ -13,5 +13,6 @@
 
 
 
-<?php include __DIR__. '/parts/html-foot.php' ?>
-<?php include __DIR__. '/parts/scripts.php' ?>
+<?php include __DIR__. '/parts/footer.php' ?>
+<?php include __DIR__ . '/parts/scripts.php' ?>
+<?php include __DIR__ . '/parts/html-foot.php' ?>

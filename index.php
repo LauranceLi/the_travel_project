@@ -38,3 +38,4 @@
 
 
 <?php include __DIR__ . '/parts/scripts.php' ?>
+<?php include __DIR__ . '/parts/html-foot.php' ?>
