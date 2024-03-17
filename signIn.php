@@ -6,19 +6,46 @@ include './parts/pdo_connect.php';
 $email = $conn->real_escape_string($_POST['email']);
 $password = $conn->real_escape_string($_POST['password']);
 
-$sql = "SELECT * FROM employees WHERE email='$email'";
 
-$result = $conn->query($sql);
-if ($result->num_rows == 1) {
-  $row = $result->fetch_assoc();
+$employee_sql = "SELECT * FROM employees INNER JOIN role_set ON role_set.role_id = employees.employee_role_id WHERE email='$email'";
+$employee_result = $conn->query($employee_sql);
 
-  if ($password === $row['password']) {
-
+if ($employee_result->num_rows == 1) {
+  $employee_row = $employee_result->fetch_assoc();
+  // 获取基本资料
+  if ($password === $employee_row['password']) {
     $_SESSION['admin'] = [
-      'employee_id' => $row['employee_id'],
-      'email' => $row['email'],
-      'employee_nickname' => $row['employee_nickname'],
+      'employee_id' => $employee_row['employee_id'],
+      'employee_role_id' => $employee_row['employee_role_id'],
+      'email' => $employee_row['email'],
+      'employee_nickname' => $employee_row['employee_nickname'],
+      'role_name' => $employee_row['role_name'],
     ];
+    $role_id = $_SESSION['admin']['employee_role_id'];
+
+
+  //获取权限
+  $permission_sql =
+  "SELECT *
+  FROM permission
+  INNER JOIN role_set
+  ON role_set.role_id = permission.permission_role_id
+  WHERE role_id = $role_id";
+
+  $permission_result = $conn->query($permission_sql);
+  $permission_row = $permission_result->fetch_assoc();
+  $_SESSION['permission'] = [
+    'role_set' => $permission_row['role_set'],
+    'role_name' => $permission_row['role_name'],
+    'employees' => $permission_row['employees'],
+    'members' => $permission_row['members'],
+    'points' => $permission_row['points'],
+    'itinerary' => $permission_row['itinerary'],
+    'orders' => $permission_row['orders'],
+    'products' => $permission_row['products'],
+    'form' => $permission_row['form']
+  ];
+
 
 
     header("Location: index_.php");
