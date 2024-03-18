@@ -1,7 +1,7 @@
 <?php
   require __DIR__ . '/parts/pdo_connect.php';
   session_start();
-  $title = "Index";
+  $title = "歡迎回來";
   $pageName = 'index';
   
 ?>
