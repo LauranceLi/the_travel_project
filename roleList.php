@@ -60,13 +60,13 @@ $permission_result = $conn->query($permission_sql);
         <div class="roleListTitleBox d-flex justify-content-between">
           <h3 class="mb-3">角色權限一覽</h3>
           <!-- add form start -->
-          <button type="button" class="btn btn-outline-info mb-3 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">新增</button>
-          <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <button type="button" class="btn btn-outline-info mb-3 " data-bs-toggle="modal" data-bs-target="#addBackdrop">新增</button>
+          <div class="modal fade " id="addBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content bg-secondary border-0">
                 <form action="roleList.php" method="post">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">新增角色</h5>
+                    <h5 class="modal-title" id="addLabel">新增角色</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
 
@@ -252,7 +252,7 @@ $permission_result = $conn->query($permission_sql);
 
                   $isAuthorized_sql_result = $conn->query($isAuthorized_sql);
                   //執行語法，透過 PDO 物件導向到 query
-                  header("location:roleList.php");
+                  header("Location: roleList-success.php");
                 }
                 ?>
               </div>
@@ -359,25 +359,39 @@ $permission_result = $conn->query($permission_sql);
                   ?>
                 </td>
                 <td class="text-center">
-                  <a href="javascript: deleteOne(<?= $r['role_id'] ?>)" class="vstack">
+                  <a href="#" class="vstack"data-bs-toggle="modal" data-bs-target="#editBackdrop">
                     <i class="fa-solid fa-pen-to-square"></i>
                   </a>
                 </td>
                 <!-- edit form start -->
-                <button type="button" class="btn btn-outline-info mb-3 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">新增</button>
-                <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+                <div class="modal fade " id="editBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content bg-secondary border-0">
                       <form action="roleList.php" method="post">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="staticBackdropLabel">新增角色</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          <h5 class="modal-title" id="editLabel">編輯角色</h5>
                         </div>
 
                         <div class="modal-body ">
                           <h6>角色名稱</h6>
                           <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="新建名稱" aria-label="Username" aria-describedby="basic-addon1" name="new_role_name">
+                            <?php 
+                            
+                            $role_id = $r['role_id'];
+                            $edit_sql = "SELECT *
+                            FROM permission
+                            INNER JOIN role_set
+                            ON role_set.role_id = permission.permission_role_id
+                            WHERE role_id = $role_id ";
+                            $edit_sql_result = $conn->query($edit_sql)->fetch_assoc();
+                            $edit_name = $edit_sql_result['role_name'];
+                            
+
+
+
+                            ?>
+                            <input type="text" class="form-control" name="new_role_name" value="<?= $edit_sql_result['role_name'] ?>" readonly>
                           </div>
 
                           <div class="permissionBox d-flex justify-content-between">
@@ -526,39 +540,10 @@ $permission_result = $conn->query($permission_sql);
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                          <button type="submit" class="btn btn-outline-info">新增</button>
+                          <button type="submit" class="btn btn-outline-info">編輯</button>
                         </div>
                       </form>
-                      <?php
-                      // print_r($_POST);
-                      if (!empty($_POST)) {
-                        $the_employee = $_SESSION['admin']['employee_id'];
-                        $new_role_sql = "INSERT INTO `role_set`(`role_name`, `description`, `created_at`, `employee_id`) VALUES ('" . $_POST['new_role_name'] . "','" . $_POST['new_role_desc'] . "',NOW(),'$the_employee')";
-                        $new_role_result = $conn->query($new_role_sql);
 
-                        $new_role_row = $conn->query("SELECT role_id FROM role_set order by created_at desc limit 1")->fetch_assoc();
-
-                        $new_role_id = $new_role_row['role_id'];
-                        //新增逻辑
-
-                        $isAuthorized = isset($_POST['isAuthorized']) ? $_POST['isAuthorized'] : [];
-                        $roleSetAuthorized = in_array(1, $isAuthorized) ? 1 : 0;
-                        $employeesAuthorized = in_array(2, $isAuthorized) ? 1 : 0;
-                        $membersAuthorized = in_array(3, $isAuthorized) ? 1 : 0;
-                        $pointsAuthorized = in_array(4, $isAuthorized) ? 1 : 0;
-                        $itineraryAuthorized = in_array(5, $isAuthorized) ? 1 : 0;
-                        $ordersAuthorized = in_array(6, $isAuthorized) ? 1 : 0;
-                        $productsAuthorized = in_array(7, $isAuthorized) ? 1 : 0;
-                        $formAuthorized = in_array(8, $isAuthorized) ? 1 : 0;
-
-                        $isAuthorized_sql =
-                          "INSERT INTO `permission`(`permission_role_id`, `role_set`, `employees`, `members`, `points`, `itinerary`, `orders`, `products`, `form`)VALUES ($new_role_id,$roleSetAuthorized,$employeesAuthorized,$membersAuthorized,$pointsAuthorized,$itineraryAuthorized,$ordersAuthorized,$productsAuthorized,$formAuthorized)";
-
-                        $isAuthorized_sql_result = $conn->query($isAuthorized_sql);
-                        //執行語法，透過 PDO 物件導向到 query
-                        header("location:roleList.php");
-                      }
-                      ?>
                     </div>
                   </div>
                 </div>
@@ -639,6 +624,7 @@ $permission_result = $conn->query($permission_sql);
   const deleteOne = (role_id) => {
     if (confirm(`是否要刪除編號為${role_id}的項目`)) {
       location.href = `roleList-delete.php?role_id=${role_id}`;
+      console.log(role_id);
     } else {
       return
     }
