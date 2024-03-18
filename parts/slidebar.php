@@ -17,13 +17,10 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="index_.php" class="nav-item nav-link <?= $pageName == 'index' ? 'active' : '' ?>"><i class="fa-solid fa-house-user me-2"></i>歡迎回来</a>
-
-
-
                     <a href="roleList.php" class="nav-item nav-link <?= $pageName == 'roleList' ? 'active' : '' ?>" ><i class="fa-solid fa-shield-halved me-2"></i>角色權限管理</a>
                     <a href="employees.php" class="nav-item nav-link <?= $pageName == 'employees' ? 'active' : '' ?>" ><i class="fa-solid fa-circle-user me-2"></i>員工管理</a>
-                    
-                    <a href="members.php" class="nav-item nav-link <?= $pageName == 'members' ? 'active' : '' ?>" ><i class="fa-solid fa-users me-2"></i>會員管理</a>
+                    <a href="members.php" class="nav-item nav-link <?=$pageName == 'members' ? 'active' : ''?>" ><i class="fa-solid fa-users me-2"></i>會員管理</a>
+
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-star-half-stroke me-2"></i>積分管理</a>
