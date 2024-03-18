@@ -12,8 +12,10 @@ if (! empty($role_id)) {
 }
 
 
+$backTo = 'roleList-success.php';
+
 if (! empty($_SERVER['HTTP_REFERER'])){
   $backTo = $_SERVER['HTTP_REFERER'];
 
 }
-
+header("Location: $backTo");
