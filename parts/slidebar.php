@@ -1,8 +1,4 @@
-<?php
-if (!isset($pageName)) {
-  $pageName = '';
-}
-?>
+
 <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
@@ -22,25 +18,12 @@ if (!isset($pageName)) {
                 <div class="navbar-nav w-100">
                     <a href="index_.php" class="nav-item nav-link <?= $pageName == 'index' ? 'active' : '' ?>"><i class="fa-solid fa-house-user me-2"></i>歡迎回来</a>
 
-                    <!-- <div class="nav-item dropdown">
-                        <a href="#" 
-                        class="nav-link dropdown-toggle <?= $pageName == 'role_settings'  ? 'active' : '' ?> <?= $pageName == 'authority_settings'  ? 'active' : '' ?>" 
-                        data-bs-toggle="dropdown"
-                        
-                        >
-                        <i class="fa fa-laptop me-2"></i>權限管理</a>
-                        <div class="dropdown-menu bg-transparent border-0
-                        <?= $pageName == 'authority_settings' ? 'show' : '' ?>
-                        <?= $pageName == 'role_settings' ? 'show' : '' ?>">
-                            <a href="authority_settings.php " class="dropdown-item <?= $pageName == 'authority_settings' ? 'active' : '' ?>">權限設置</a>
-                            <a href="role_settings.php" class="dropdown-item <?= $pageName == 'role_settings' ? 'active' : '' ?>"
-                            data-bs-popper="<?= $pageName == 'role_settings' ? 'none' : '' ?>">角色設置</a>
-                        </div>
-                    </div> -->
+
 
                     <a href="roleList.php" class="nav-item nav-link <?= $pageName == 'roleList' ? 'active' : '' ?>" ><i class="fa-solid fa-shield-halved me-2"></i>角色權限管理</a>
-                    <a href="employee.php" class="nav-item nav-link <?= $pageName == 'employee' ? 'active' : '' ?>" ><i class="fa-solid fa-circle-user me-2"></i>員工管理</a>
-                    <a href="member.php" class="nav-item nav-link <?= $pageName == 'member' ? 'active' : '' ?>"><i class="fa-solid fa-users me-2"></i>會員管理</a>
+                    <a href="employees.php" class="nav-item nav-link <?= $pageName == 'employees' ? 'active' : '' ?>" ><i class="fa-solid fa-circle-user me-2"></i>員工管理</a>
+                    
+                    <a href="members.php" class="nav-item nav-link <?= $pageName == 'members' ? 'active' : '' ?>" ><i class="fa-solid fa-users me-2"></i>會員管理</a>
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-star-half-stroke me-2"></i>積分管理</a>

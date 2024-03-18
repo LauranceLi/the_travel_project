@@ -1,4 +1,10 @@
-
+<?php
+  require __DIR__ . '/parts/pdo_connect.php';
+  session_start();
+  $title = "登入";
+  $pageName = 'index';
+  
+?>
 
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/spinner.php' ?>
