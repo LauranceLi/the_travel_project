@@ -14,24 +14,16 @@ if (!empty($_POST)) {
   //新增逻辑
 
   $isAuthorized = isset($_POST['isAuthorized']) ? $_POST['isAuthorized'] : [];
-  // $roleSetAuthorized = in_array(1, $isAuthorized) ? 1 : 0;
-  // $employeesAuthorized = in_array(2, $isAuthorized) ? 1 : 0;
-  // $membersAuthorized = in_array(3, $isAuthorized) ? 1 : 0;
-  // $pointsAuthorized = in_array(4, $isAuthorized) ? 1 : 0;
-  // $itineraryAuthorized = in_array(5, $isAuthorized) ? 1 : 0;
-  // $ordersAuthorized = in_array(6, $isAuthorized) ? 1 : 0;
-  // $productsAuthorized = in_array(7, $isAuthorized) ? 1 : 0;
-  // $formAuthorized = in_array(8, $isAuthorized) ? 1 : 0;
 
-  $roleSet = isset($_POST['roleSet']);# ? $_POST['roleSet'] : 'noAuthority';
-  $employee = isset($_POST['employee']);# ? $_POST['employee'] : 'noAuthority';
-  $member = isset($_POST['member']);# ? $_POST['member'] : 'noAuthority';
-  $point = isset($_POST['point']);# ? $_POST['point'] : 'noAuthority';
-  $itinerary = isset($_POST['itinerary']);# ? $_POST['itinerary'] : 'noAuthority';
-  $order = isset($_POST['order']);# ? $_POST['order'] : 'noAuthority';
-  $product = isset($_POST['product']);# ? $_POST['product'] : 'noAuthority';
-  $form = isset($_POST['form']);# ? $_POST['form'] : 'noAuthority';
 
+  $roleSet = isset($_POST['roleSet']);
+  $employee = isset($_POST['employee']);
+  $member = isset($_POST['member']);
+  $point = isset($_POST['point']);
+  $itinerary = isset($_POST['itinerary']);
+  $order = isset($_POST['order']);
+  $product = isset($_POST['product']);
+  $form = isset($_POST['form']);
   
   function authorized($sql) {
     if (empty($sql)){

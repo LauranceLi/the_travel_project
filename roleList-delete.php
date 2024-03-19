@@ -13,9 +13,6 @@ if (! empty($role_id)) {
   header("Location:$backTo");
 }
 
-
-
-
 if (! empty($_SERVER['HTTP_REFERER'])){
   $backTo = $_SERVER['HTTP_REFERER'];
 
