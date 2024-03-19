@@ -8,7 +8,7 @@
 		$price = $_POST['price'];
 		$title = $_POST['title'];
 		$description = $_POST['description'];
-		$sql = "INSERT INTO project (product_Id, product, price,title,description) VALUES ('$product_Id', '$product', '$price','$title','$description')";
+		$sql = "INSERT INTO the_travel_project (product_Id, product, price,title,description) VALUES ('$product_Id', '$product', '$price','$title','$description')";
 
 		//use for MySQLi OOP
 		if($conn->query($sql)){

@@ -9,7 +9,7 @@
 		$price = $_POST['price'];
 		$title = $_POST['title'];
 		$description = $_POST['description'];
-		$sql = "UPDATE project SET product_Id = '$product_Id', product = '$product', price = '$price', title = '$title', description = '$description' WHERE id = '$id'";
+		$sql = "UPDATE the_travel_project SET product_Id = '$product_Id', product = '$product', price = '$price', title = '$title', description = '$description' WHERE id = '$id'";
 
 		//use for MySQLi OOP
 		if($conn->query($sql)){
