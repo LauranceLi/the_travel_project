@@ -33,32 +33,29 @@ if (!empty($_POST)) {
   $form = isset($_POST['form']);# ? $_POST['form'] : 'noAuthority';
 
   
-function authorized($sql,$result) {
-  if (empty($sql)){
-    $result =  'noAuthority';
-  } else if (in_array(1, $sql)) {
-    $result =  'edit';
-  } else {
-    $result =  'view';
-  }
-  return $result; // 可選的返回值
-  }
-
-  $roleSetAuthorized = authorized($_POST['roleSet'],$isAuthorized);
-  $employeesAuthorized = authorized($_POST['employee'],$isAuthorized);
-  $membersAuthorized = authorized($_POST['member'],$isAuthorized);
-  $pointsAuthorized = authorized($_POST['point'],$isAuthorized);
-  $itineraryAuthorized = authorized($_POST['itinerary'],$isAuthorized);
-  $ordersAuthorized = authorized($_POST['order'],$isAuthorized);
-  $productsAuthorized = authorized($_POST['product'],$isAuthorized);
-  $formAuthorized = authorized($_POST['form'],$isAuthorized);
-
-
+  function authorized($sql) {
+    if (empty($sql)){
+      return 'noAuthority';
+    } else if (in_array('edit', $sql)) {
+      return 'edit';
+    } else {
+      return 'view';
+    }
+    }
+  
+    $roleSetAuthorized = authorized($_POST['roleSet']);
+    $employeesAuthorized = authorized($_POST['employee']);
+    $membersAuthorized = authorized($_POST['member']);
+    $pointsAuthorized = authorized($_POST['point']);
+    $itineraryAuthorized = authorized($_POST['itinerary']);
+    $ordersAuthorized = authorized($_POST['order']);
+    $productsAuthorized = authorized($_POST['product']);
+    $formAuthorized = authorized($_POST['form']);
 
 
 
   $isAuthorized_sql =
-    "INSERT INTO `permission`(`permission_role_id`, `role_set`, `employees`, `members`, `points`, `itinerary`, `orders`, `products`, `form`)VALUES ($new_role_id,$roleSetAuthorized,$employeesAuthorized,$membersAuthorized,$pointsAuthorized,$itineraryAuthorized,$ordersAuthorized,$productsAuthorized,$formAuthorized)";
+    "INSERT INTO `permission`(`permission_role_id`, `role_set`, `employees`, `members`, `points`, `itinerary`, `orders`, `products`, `form`)VALUES ($new_role_id,'$roleSetAuthorized','$employeesAuthorized','$membersAuthorized','$pointsAuthorized','$itineraryAuthorized','$ordersAuthorized','$productsAuthorized','$formAuthorized')";
 
   $isAuthorized_sql_result = $conn->query($isAuthorized_sql);
   header("Location: roleList-success.php");

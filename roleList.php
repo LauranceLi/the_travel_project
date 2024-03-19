@@ -42,7 +42,19 @@ $permission_sql =
 
 $permission_result = $conn->query($permission_sql);
 
+function permission_icon($permission_r){
+  if ($permission_r =='edit') {
+    echo '<i class="fa-solid fa-pen-to-square"></i>';
+  }else if ($permission_r == 'view'){
+    echo '<i class="fa-solid fa-eye"></i>';
+  }else {
+    echo '<i class="fa-solid fa-square-xmark"></i>';
+  }
+};
+
 ?>
+
+
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <style>
   table {
@@ -87,10 +99,10 @@ $permission_result = $conn->query($permission_sql);
                               <label class="form-check-label " for="roleSetCheckAll">全選</label>
                             </div>
                             <div class="btn-group" role="group">
-                              <input name="roleSet[]" type="checkbox" class="btn-check" id="viewRoleSet" autocomplete="off" checked="true" onclick="allCheck('roleSetCheckAll','roleSet') " value="2">
+                              <input name="roleSet[]" type="checkbox" class="btn-check" id="viewRoleSet" autocomplete="off" checked="true" onclick="allCheck('roleSetCheckAll','roleSet') " value="view">
                               <label class="btn btn-outline-info" for="viewRoleSet">檢視</label>
 
-                              <input name="roleSet[]" type="checkbox" class="btn-check" id="editRoleSet" autocomplete="off" onclick="allCheck('roleSetCheckAll','roleSet')" value="1">
+                              <input name="roleSet[]" type="checkbox" class="btn-check" id="editRoleSet" autocomplete="off" onclick="allCheck('roleSetCheckAll','roleSet')" value="edit">
                               <label class="btn btn-outline-info" for="editRoleSet">編輯</label>
 
 
@@ -101,14 +113,14 @@ $permission_result = $conn->query($permission_sql);
                           <h6>員工管理</h6>
                           <div class="bg-secondary rounded h-100 p-1 d-flex">
                             <div class="form-check form-switch me-4 d-flex align-items-center">
-                              <input class="form-check-input me-2" name="isAuthorized[]" value="2" type="checkbox" role="switch" id="employeesCheckAll" onclick="checkAll(this,'employee')">
+                              <input class="form-check-input me-2" name="isAuthorized[]" value="view" type="checkbox" role="switch" id="employeesCheckAll" onclick="checkAll(this,'employee')">
                               <label class="form-check-label " for="employeesCheckAll">全選</label>
                             </div>
                             <div class="btn-group" role="group">
-                              <input name="employee[]" type="checkbox" class="btn-check" id="viewEmployee" autocomplete="off" onclick="allCheck('employeesCheckAll','employee')" checked="true" value="2">
+                              <input name="employee[]" type="checkbox" class="btn-check" id="viewEmployee" autocomplete="off" onclick="allCheck('employeesCheckAll','employee')" checked="true" value="view">
                               <label class="btn btn-outline-info" for="viewEmployee">檢視</label>
 
-                              <input name="employee[]" type="checkbox" class="btn-check" id="editEmployee" autocomplete="off" onclick="allCheck('employeesCheckAll','employee')" value="1">
+                              <input name="employee[]" type="checkbox" class="btn-check" id="editEmployee" autocomplete="off" onclick="allCheck('employeesCheckAll','employee')" value="edit">
                               <label class="btn btn-outline-info" for="editEmployee">編輯</label>
 
                             </div>
@@ -122,10 +134,10 @@ $permission_result = $conn->query($permission_sql);
                               <label class="form-check-label " for="membersCheckAll">全選</label>
                             </div>
                             <div class="btn-group" role="group">
-                              <input name="member[]" type="checkbox" class="btn-check" id="viewMember" autocomplete="off" onclick="allCheck('membersCheckAll','member')" checked="true" value="2">
+                              <input name="member[]" type="checkbox" class="btn-check" id="viewMember" autocomplete="off" onclick="allCheck('membersCheckAll','member')" checked="true" value="view">
                               <label class="btn btn-outline-info" for="viewMember">檢視</label>
 
-                              <input name="member[]" type="checkbox" class="btn-check" id="editMember" autocomplete="off" onclick="allCheck('membersCheckAll','member')" value="1">
+                              <input name="member[]" type="checkbox" class="btn-check" id="editMember" autocomplete="off" onclick="allCheck('membersCheckAll','member')" value="edit">
                               <label class="btn btn-outline-info" for="editMember">編輯</label>
 
                             </div>
@@ -139,10 +151,10 @@ $permission_result = $conn->query($permission_sql);
                               <label class="form-check-label " for="pointsCheckAll">全選</label>
                             </div>
                             <div class="btn-group" role="group">
-                              <input name="point[]" type="checkbox" class="btn-check" id="viewPoint" autocomplete="off" onclick="allCheck('pointsCheckAll','point')" checked="true" value="2">
+                              <input name="point[]" type="checkbox" class="btn-check" id="viewPoint" autocomplete="off" onclick="allCheck('pointsCheckAll','point')" checked="true" value="view">
                               <label class="btn btn-outline-info" for="viewPoint">檢視</label>
 
-                              <input name="point[]" type="checkbox" class="btn-check" id="editPoint" autocomplete="off" onclick="allCheck('pointsCheckAll','point')"  value="1">
+                              <input name="point[]" type="checkbox" class="btn-check" id="editPoint" autocomplete="off" onclick="allCheck('pointsCheckAll','point')"  value="edit">
                               <label class="btn btn-outline-info" for="editPoint">編輯</label>
                             </div>
                           </div>
@@ -158,10 +170,10 @@ $permission_result = $conn->query($permission_sql);
                               <label class="form-check-label " for="itineraryCheckAll">全選</label>
                             </div>
                             <div class="btn-group" role="group">
-                              <input name="itinerary[]" type="checkbox" class="btn-check" id="viewItinerary" autocomplete="off" onclick="allCheck('itineraryCheckAll','itinerary')" checked="true" value="2">
+                              <input name="itinerary[]" type="checkbox" class="btn-check" id="viewItinerary" autocomplete="off" onclick="allCheck('itineraryCheckAll','itinerary')" checked="true" value="view">
                               <label class="btn btn-outline-info" for="viewItinerary">檢視</label>
 
-                              <input name="itinerary[]" type="checkbox" class="btn-check" id="editItinerary" autocomplete="off" onclick="allCheck('itineraryCheckAll','itinerary')" value="1">
+                              <input name="itinerary[]" type="checkbox" class="btn-check" id="editItinerary" autocomplete="off" onclick="allCheck('itineraryCheckAll','itinerary')" value="edit">
                               <label class="btn btn-outline-info" for="editItinerary">編輯</label>
                             </div>
                           </div>
@@ -174,10 +186,10 @@ $permission_result = $conn->query($permission_sql);
                               <label class="form-check-label " for="ordersCheckAll">全選</label>
                             </div>
                             <div class="btn-group" role="group">
-                              <input name="order[]" type="checkbox" class="btn-check" id="viewOrder" autocomplete="off" onclick="allCheck('ordersCheckAll','order')" checked="true" value="2">
+                              <input name="order[]" type="checkbox" class="btn-check" id="viewOrder" autocomplete="off" onclick="allCheck('ordersCheckAll','order')" checked="true" value="view">
                               <label class="btn btn-outline-info" for="viewOrder">檢視</label>
 
-                              <input name="order[]" type="checkbox" class="btn-check" id="editOrder" autocomplete="off" onclick="allCheck('ordersCheckAll','order')" value="1">
+                              <input name="order[]" type="checkbox" class="btn-check" id="editOrder" autocomplete="off" onclick="allCheck('ordersCheckAll','order')" value="edit">
                               <label class="btn btn-outline-info" for="editOrder">編輯</label>
                             </div>
                           </div>
@@ -191,9 +203,9 @@ $permission_result = $conn->query($permission_sql);
                             </div>
                             <div class="btn-group" role="group">
                               <input name="product[]" type="checkbox" class="btn-check" id="viewProduct" autocomplete="off" checked="true" onclick="allCheck('productsCheckAll','product')">
-                              <label class="btn btn-outline-info" for="viewProduct" value="2">檢視</label>
+                              <label class="btn btn-outline-info" for="viewProduct" value="view">檢視</label>
 
-                              <input name="product[]" type="checkbox" class="btn-check" id="editProduct" autocomplete="off" onclick="allCheck('productsCheckAll','product')" value="1">
+                              <input name="product[]" type="checkbox" class="btn-check" id="editProduct" autocomplete="off" onclick="allCheck('productsCheckAll','product')" value="edit">
                               <label class="btn btn-outline-info" for="editProduct">編輯</label>
                             </div>
                           </div>
@@ -209,7 +221,7 @@ $permission_result = $conn->query($permission_sql);
                               <input name="form[]" type="checkbox" class="btn-check" id="viewForm" autocomplete="off" onclick="allCheck('formCheckAll','form')" checked="true">
                               <label class="btn btn-outline-info" for="viewForm">檢視</label>
 
-                              <input name="form[]" type="checkbox" class="btn-check" id="editForm" autocomplete="off" onclick="allCheck('formCheckAll','form')" value="1">
+                              <input name="form[]" type="checkbox" class="btn-check" id="editForm" autocomplete="off" onclick="allCheck('formCheckAll','form')" value="edit">
                               <label class="btn btn-outline-info" for="editForm">編輯</label>
 
                             </div>
@@ -236,7 +248,7 @@ $permission_result = $conn->query($permission_sql);
         </div>
 
         <div class="descript">
-          <p>說明：<i class="fa-solid fa-pen-to-square me-1"></i>可供編輯、<i class="fa-solid fa-eye me-1"></i>僅供檢視</p>
+          <p>說明：<i class="fa-solid fa-pen-to-square me-1"></i>可供編輯、<i class="fa-solid fa-eye me-1"></i>僅供檢視、<i class="fa-solid fa-square-xmark me-1"></i>無任何權限</p>
         </div>
         <!-- Role List Start -->
         <table class="table table-bordered">
@@ -259,78 +271,31 @@ $permission_result = $conn->query($permission_sql);
           <tbody>
             <?php foreach ($permission_result as $r) : ?>
               <tr>
+
                 <td class="text-center"><?= $r['role_name'] ?></td>
                 <td class="text-center">
-                  <?php
-                  if ($r['role_set']) {
-                    echo '<i class="fa-solid fa-pen-to-square"></i>';
-                  } else {
-                    echo '<i class="fa-solid fa-eye"></i>';
-                  }
-                  ?>
+                <?php permission_icon($r['role_set']); ?>
                 </td>
                 <td class="text-center">
-                  <?php
-                  if ($r['employees']) {
-                    echo '<i class="fa-solid fa-pen-to-square"></i>';
-                  } else {
-                    echo '<i class="fa-solid fa-eye"></i>';
-                  }
-                  ?>
+                  <?php permission_icon($r['employees']); ?>
                 </td>
                 <td class="text-center">
-                  <?php
-                  if ($r['members']) {
-                    echo '<i class="fa-solid fa-pen-to-square"></i>';
-                  } else {
-                    echo '<i class="fa-solid fa-eye"></i>';
-                  }
-                  ?>
+                <?php permission_icon($r['members']); ?>
                 </td>
                 <td class="text-center">
-                  <?php
-                  if ($r['points']) {
-                    echo '<i class="fa-solid fa-pen-to-square"></i>';
-                  } else {
-                    echo '<i class="fa-solid fa-eye"></i>';
-                  }
-                  ?>
+                <?php permission_icon($r['points']); ?>
                 </td>
                 <td class="text-center">
-                  <?php
-                  if ($r['itinerary']) {
-                    echo '<i class="fa-solid fa-pen-to-square"></i>';
-                  } else {
-                    echo '<i class="fa-solid fa-eye"></i>';
-                  }
-                  ?>
+                <?php permission_icon($r['itinerary']); ?>
                 </td>
                 <td class="text-center">
-                  <?php
-                  if ($r['orders']) {
-                    echo '<i class="fa-solid fa-pen-to-square"></i>';
-                  } else {
-                    echo '<i class="fa-solid fa-eye"></i>';
-                  }
-                  ?>
+                <?php permission_icon($r['orders']); ?>
                 </td>
                 <td class="text-center">
-                  <?php
-                  if ($r['products']) {
-                    echo '<i class="fa-solid fa-pen-to-square"></i>';
-                  } else {
-                    echo '<i class="fa-solid fa-eye"></i>';
-                  }
-                  ?>
+                <?php permission_icon($r['products']); ?>
                 </td>
                 <td class="text-center">
-                  <?php
-                  if ($r['form']) {
-                    echo '<i class="fa-solid fa-pen-to-square"></i>';
-                  } else {
-                    echo '<i class="fa-solid fa-eye"></i>';
-                  }
-                  ?>
+                <?php permission_icon($r['form']); ?>
                 </td>
                 <td class="text-center">
                   <a href="#" class="vstack" data-bs-toggle="modal" data-bs-target="#editBackdrop<?= $r['role_id'] ?>">

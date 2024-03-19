@@ -28,7 +28,15 @@
             </div>
 
 
-            <a href="" class="nav-item nav-link <?=$pageName == '' ? 'active' : ''?>"><i class="fa-solid fa-book me-2"></i>套裝行程管理</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-book me-2"></i>套裝管理</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="crud_datatable_tcpdf_itinerary" class="dropdown-item">套裝行程</a>
+                    <a href="crud_datatable_tcpdf_oder" class="dropdown-item">套裝訂單</a>
+                </div>
+            </div>
+
+
             <a href="" class="nav-item nav-link <?=$pageName == '' ? 'active' : ''?>"><i class="fa-solid fa-sack-dollar me-2"></i>訂單管理</a>
             <a href="" class="nav-item nav-link <?=$pageName == '' ? 'active' : ''?>"><i class="fa-solid fa-bag-shopping me-2"></i>商品上架管理</a>
 
