@@ -9,13 +9,15 @@ if (! empty($role_id)) {
   $conn->query($role_set_sql);
   $permission_sql = "DELETE FROM permission WHERE permission_role_id=$role_id";
   $conn->query($permission_sql);
+  $backTo = 'roleList-success.php';
+  header("Location:$backTo");
 }
 
 
-$backTo = 'roleList-success.php';
+
 
 if (! empty($_SERVER['HTTP_REFERER'])){
   $backTo = $_SERVER['HTTP_REFERER'];
 
 }
-header("Location: $backTo");
+
