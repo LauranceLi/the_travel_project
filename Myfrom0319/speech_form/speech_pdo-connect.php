@@ -1,9 +1,9 @@
 <?php
 
 $db_host='localhost';
-$db_user='root';
+$db_user='the_travel_project';
 $db_pass='';
-$db_name='proj57';
+$db_name='the_travel_project';
 
 $dsn="mysql:host={$db_host};dbname={$db_name};charset=utf8mb4";
 
@@ -14,7 +14,7 @@ $pdo_options =[
 
 $pdo=new PDO($dsn,$db_user,$db_pass);
 
-$sql= "SELECT * FROM proj57.speech_list;";
+$sql= "SELECT * FROM the_travel_project.speech_list;";
 $stmt=$pdo->query($sql);
 
 $rows=$stmt->fetchAll();
