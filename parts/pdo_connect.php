@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost"; // 資料庫伺服器名稱
+$servername = "172.23.52.126"; // 資料庫伺服器名稱
 $username = "the_travel_project"; // 資料庫使用者名稱
 $password = ""; // 資料庫使用者密碼
 $dbname = "the_travel_project"; // 資料庫名稱

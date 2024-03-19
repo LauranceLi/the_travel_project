@@ -32,8 +32,8 @@
 
 
                     <a href="" class="nav-item nav-link <?= $pageName == '' ? 'active' : '' ?>"><i class="fa-solid fa-book me-2"></i>套裝行程管理</a>
-                    <a href="" class="nav-item nav-link <?= $pageName == '' ? 'active' : '' ?>"><i class="fa-solid fa-sack-dollar me-2"></i>訂單管理</a>
-                    <a href="" class="nav-item nav-link <?= $pageName == '' ? 'active' : '' ?>"><i class="fa-solid fa-bag-shopping me-2"></i>商品上架管理</a>
+                    <a href="crud_datatable_tcpdf1" class="nav-item nav-link <?= $pageName == '' ? 'active' : '' ?>"><i class="fa-solid fa-sack-dollar me-2"></i>訂單管理</a>
+                    <a href="crud_datatable_tcpdf2" class="nav-item nav-link <?= $pageName == '' ? 'active' : '' ?>"><i class="fa-solid fa-bag-shopping me-2"></i>商品上架管理</a>
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-rectangle-list me-2"></i>表單管理</a>
