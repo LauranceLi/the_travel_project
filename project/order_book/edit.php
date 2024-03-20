@@ -124,7 +124,7 @@ $row = $pdo->query("SELECT * FROM `order` WHERE order_id=$order_id")->fetch();
                         <div class="mb-3">
                             <label for="shipping_date" class="form-label">出貨日期</label>
                             <input type="text" class="form-control" value="<?= $row['shipping_date'] ?>" disabled>
-                            <input type="date" class="form-control" id="shipping_date" name="shipping_date" value="<?= $row['shipping_date'] ?>">
+                            <input type="datetime-local" class="form-control" id="shipping_date" name="shipping_date" value="<?= $row['shipping_date'] ?>">
                             <div class="form-text"></div>
                         </div>
                         <button type="submit" class="btn btn-primary">修改</button>
