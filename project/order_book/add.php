@@ -234,6 +234,10 @@ if (session_status() === PHP_SESSION_NONE) {
         const pattern = /^09\d{2}-?\d{3}-?\d{3}$/;
         return pattern.test(mobile);
     }
+    function validateAddress(address) {
+        const pattern = /(?<city>\D+[縣市])(?<district>\D+?(市區|鎮區|鎮市|[鄉鎮市區]))(?<others>.+)/ 
+        return pattern.test(address);
+    }
 
     function sendData(event) {
         nameEl.style.border = "2px solid #CCC";
@@ -259,6 +263,12 @@ if (session_status() === PHP_SESSION_NONE) {
             mobileEl.style.border = "2px solid red";
             mobileEl.nextElementSibling.innerHTML = "請輸入正確的手機號碼";
         }
+        if (!shipping_addressEl.value || !validateAddress(shipping_addressEl.value)) {
+            isPass = false;
+            shipping_addressEl.style.border = "2px solid red";
+            shipping_addressEl.nextElementSibling.innerHTML = "請輸入正確的送貨地址(縣市+行政區+詳細地址)";
+        }
+
         if (!checkForm()) {
             isPass = false;
         }
