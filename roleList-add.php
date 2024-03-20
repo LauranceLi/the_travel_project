@@ -13,17 +13,7 @@ if (!empty($_POST)) {
   $new_role_id = $new_role_row['role_id'];
   //新增逻辑
 
-  $isAuthorized = isset($_POST['isAuthorized']) ? $_POST['isAuthorized'] : [];
 
-
-  $roleSet = isset($_POST['roleSet']);
-  $employee = isset($_POST['employee']);
-  $member = isset($_POST['member']);
-  $point = isset($_POST['point']);
-  $itinerary = isset($_POST['itinerary']);
-  $order = isset($_POST['order']);
-  $product = isset($_POST['product']);
-  $form = isset($_POST['form']);
   
   function authorized($sql) {
     if (empty($sql)){
