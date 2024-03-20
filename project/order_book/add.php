@@ -1,6 +1,6 @@
 <?php require __DIR__ . '/parts/admin-required.php';
 require __DIR__ . '/parts/pdo-connect.php';
-require __DIR__ . '/serialNumber_new.php';
+
 
 $title = '新增訂單';
 $pageName = 'add';
@@ -40,11 +40,6 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="card-body">
                     <h5 class="card-title">新增訂單</h5>
                     <form name="form1" onsubmit="sendData(event)">
-                        <div class="mb-3">
-                            <label for="" class="form-label">交易編號</label>
-                            <input type="text" class="form-control" id="" name="" value=<?= $transaction_id ?> disabled>
-                            <div class="form-text"></div>
-                        </div>
                         <div class="mb-3">
                             <label for="purchaser_name" class="form-label">訂購人姓名</label>
                             <input type="text" class="form-control" id="purchaser_name" name="purchaser_name">
