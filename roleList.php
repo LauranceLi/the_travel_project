@@ -497,8 +497,7 @@ function isEdit($item)
                                     id="<?= $r['role_id'] ?>editItinerary" 
                                     autocomplete="off" <?php isEdit($r['itinerary']) ?> 
                                     onclick="allCheck('<?= $r['role_id'] ?>itineraryCheckAll','<?= $r['role_id'] ?>itinerary[]')"
-                                    value="edit
-                                    ">
+                                    value="edit">
                                     <label class="btn btn-outline-info" for="<?= $r['role_id'] ?>editItinerary">編輯</label>
                                   </div>
                                 </div>
